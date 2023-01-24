@@ -8,10 +8,9 @@ const Trip = require("../models/trips");
 router.get('/', function(req, res, next) {
     Trip.find().then(data => {
         console.log('va chercher les trips');
-        res.json({data});
-
+        res.json(data);
     })
-    res.render('index', { title: 'Express' });
+    
 });
 
 
