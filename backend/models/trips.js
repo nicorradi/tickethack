@@ -8,5 +8,5 @@ tripSchema = mongoose.Schema({
   reserved: Boolean,
 });
 
-const Trip = mongoose.Model("trips", tripSchema);
+const Trip = mongoose.model("trips", tripSchema);
 module.exports = Trip;
