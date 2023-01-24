@@ -6,7 +6,11 @@ const Trip = require("../models/trips");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    Trip.find()
+    Trip.find().then(data => {
+        console.log('va chercher les trips');
+        res.json({data});
+
+    })
     res.render('index', { title: 'Express' });
 });
 
