@@ -1,16 +1,21 @@
 var express = require("express");
 var router = express.Router();
+let moment = require("moment");
 
 require("../models/connection");
 const Trip = require("../models/trips");
 
 /* GET home page. */
+
+/*
 router.get("/", function (req, res, next) {
   Trip.find().then((data) => {
     res.json(data);
   });
 });
+*/
 
+/*
 router.get("/getTripsByCityName", function (req, res, next) {
   Trip.find({
     departure: req.body.cityNameDeparture,
@@ -21,16 +26,19 @@ router.get("/getTripsByCityName", function (req, res, next) {
     res.json(data);
   });
 });
+*/
 
-router.get("/getTripsByDate", function (req, res, next) {
-  Trip.find({
-    departure: req.body.cityNameDeparture,
-    date: req.body.Date,
-  }).then((data) => {
-    console.log("affiche trips en fonction des villes et la date");
-    console.log(data);
-    res.json(data);
+router.get("/", function (req, res, next) {
+    Trip.find({
+      departure: req.body.departure,
+      arrival: req.body.arrival,
+    }).then((data) => {
+      let date = req.body.date;
+      let filteredArray = data.filter(
+        item => item.date.toISOString().substring(0, 10) === date
+      );
+      res.json({ Trips: filteredArray });
+    });
   });
-});
 
 module.exports = router;
