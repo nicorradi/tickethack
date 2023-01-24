@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 router.get('/getTripsByCityName', function(req, res, next) {
     Trip.find({departure : req.body.cityNameDeparture, arrival : req.body.cityNameArrival}).then(data => {
         console.log('va chercher les voyages au départ et arrivee des villes');
-        console.log(data);
+        console.log(data[0].date);
         res.json(data);
     })
     
