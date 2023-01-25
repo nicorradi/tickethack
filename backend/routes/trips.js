@@ -7,15 +7,15 @@ const Trip = require("../models/trips");
 
 /* GET home page. */
 
-/*
+
 router.get("/", function (req, res, next) {
   Trip.find().then((data) => {
     res.json(data);
   });
 });
-*/
 
-/*
+
+
 router.get("/getTripsByCityName", function (req, res, next) {
   Trip.find({
     departure: req.body.cityNameDeparture,
@@ -26,9 +26,9 @@ router.get("/getTripsByCityName", function (req, res, next) {
     res.json(data);
   });
 });
-*/
 
-router.get("/", function (req, res, next) {
+
+router.get("/getTripsByDate", function (req, res, next) {
   Trip.find({
     departure: req.body.departure,
     arrival: req.body.arrival,
