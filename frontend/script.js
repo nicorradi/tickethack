@@ -6,13 +6,14 @@ document.querySelector('#searchTrip').addEventListener('click', function () {
 	fetch('http://localhost:3000/trips/getTripsByDate', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({ departure : departureInput, arrival : arrivalInput, date : '2023-01-26T01:28:51.579+00:00'}),
+		body: JSON.stringify({ departure : departureInput, arrival : arrivalInput, date : dateInput}),
 	}).then(response => response.json())
 		.then(data => {
-            console.log(data);
-			if (data.length>0) {
-                for (const trip of data){
-                    document.querySelector('#boxResults').innerHTML += `
+            console.log(data.trips);
+            document.querySelector('#boxResults').innerHTML
+			if (data.trips.length>0) {
+                for (const trip of data.trips){
+                document.querySelector('#boxResults').innerHTML += `
                 <div class="trip">
                     <p class="arrival">${trip.departure}</p>
                     <p> > </p>
