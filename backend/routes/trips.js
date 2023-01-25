@@ -14,8 +14,6 @@ router.get("/", function (req, res, next) {
   });
 });
 
-
-
 router.get("/getTripsByCityName", function (req, res, next) {
   Trip.find({
     departure: req.body.cityNameDeparture,
