@@ -11,10 +11,12 @@ router.get("/", function (req, res, next) {
   });
 });
 
-router.get("/getTripsByCityName", function (req, res, next) {
+
+
+router.post("/getTripsByCityName", function (req, res, next) {
   Trip.find({
-    departure: req.body.cityNameDeparture,
-    arrival: req.body.cityNameArrival,
+    departure: req.body.departure,
+    arrival: req.body.arrival,
   }).then((data) => {
     console.log("va chercher les voyages au départ et arrivee des villes");
     console.log(data);
@@ -22,11 +24,12 @@ router.get("/getTripsByCityName", function (req, res, next) {
   });
 });
 
-router.get("/getTripsByDate", function (req, res, next) {
+router.post("/getTripsByDate", function (req, res, next) {
   Trip.find({
     departure: req.body.departure,
-    arrival: req.body.arrival,
+    arrival: req.body.arrival
   }).then((data) => {
+    
     let date = req.body.date;
     let filteredArray = data.filter(
       (item) => item.date.toISOString().substring(0, 10) === date
